@@ -1,7 +1,8 @@
 // src/lib/firebase.ts
 import { initializeApp, getApps, getApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { getFirestore, doc, setDoc, getDoc, updateDoc, serverTimestamp, DocumentData } from "firebase/firestore";
+import { getFirestore, doc, setDoc, getDoc, updateDoc, 
+  serverTimestamp, DocumentData } from "firebase/firestore";
 import crypto from "crypto";
 
 
@@ -20,7 +21,6 @@ const firebaseConfig = {
 // Prevent re-initializing Firebase on hot reload
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 export const db = getFirestore(app);
-
 
 export interface User {
   phoneHash: string;
@@ -89,6 +89,7 @@ export const updateUser = async (
   await updateDoc(userRef, updates as DocumentData);
 };
 
+// --- Zero dev smart wallet creation ---
 
 export const auth = getAuth(app);
 export default app;
